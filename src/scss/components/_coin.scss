@@ -1,0 +1,41 @@
+.coin-wrapper {
+  margin-bottom: 0px;
+  animation: move-coin 3s infinite;
+
+  .coin-container {
+    position: relative;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    height: $coin-radius;
+    width: $coin-radius;
+    animation: spin-tails 3s infinite;
+    transform: rotateX(0) translateY(0);
+
+    .coin {
+      cursor: pointer;
+      position: absolute;
+      border: 10px solid $color-primary-dark;
+      background-image: linear-gradient(
+        to right bottom,
+        $color-primary,
+        $color-primary-light,
+        $color-primary
+      );
+      color: $color-white;
+      font-size: 2rem;
+      height: $coin-radius;
+      width: $coin-radius;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+
+      &-tails {
+        transform: rotateX(180deg);
+      }
+    }
+  }
+}
