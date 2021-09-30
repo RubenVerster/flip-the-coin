@@ -1,6 +1,7 @@
 .coin-wrapper {
   margin-bottom: 0px;
-  animation: move-coin 3s infinite;
+  animation-fill-mode: forwards;
+  transform-style: preserve-3d;
 
   .coin-container {
     position: relative;
@@ -8,11 +9,11 @@
     transform-style: preserve-3d;
     height: $coin-radius;
     width: $coin-radius;
-    animation: spin-tails 3s infinite;
-    transform: rotateX(0) translateY(0);
+    animation-fill-mode: forwards;
+    transform: rotateX(0);
 
     .coin {
-      cursor: pointer;
+      transform-style: preserve-3d;
       position: absolute;
       border: 10px solid $color-primary-dark;
       background-image: linear-gradient(
@@ -32,10 +33,18 @@
       text-align: center;
       backface-visibility: hidden;
       -webkit-backface-visibility: hidden;
-
-      &-tails {
-        transform: rotateX(180deg);
-      }
+    }
+    .heads {
+      transform: rotateX(0deg);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transform-style: preserve-3d;
+    }
+    .tails {
+      transform: rotateX(180deg);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transform-style: preserve-3d;
     }
   }
 }

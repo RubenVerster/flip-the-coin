@@ -21,7 +21,8 @@ body {
   height: 100vh;
   background-image: linear-gradient(
     to right,
-    $color-primary 40%,
-    $color-secondary 100%
+    $color-primary-dark 0%,
+    $color-primary-light 40%,
+    $color-primary-dark 100%
   );
 }

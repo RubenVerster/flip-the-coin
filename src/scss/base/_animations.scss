@@ -1,10 +1,21 @@
+.spin-heads {
+  animation: spin-heads 3s forwards;
+}
+.spin-tails {
+  animation: spin-tails 3s forwards;
+}
+
+.move-coin {
+  animation: move-coin 3s forwards;
+}
+
 @keyframes spin-heads {
   0% {
     transform: rotateX(0);
   }
 
   100% {
-    transform: rotateX(1980deg);
+    transform: rotateX(1800deg);
   }
 }
 
@@ -14,7 +25,7 @@
   }
 
   100% {
-    transform: rotateX(2160deg);
+    transform: rotateX(1980deg);
   }
 }
 
