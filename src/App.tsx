@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const App = () => {
   const [score, setScore] = useState<number>(0);
@@ -9,6 +9,13 @@ const App = () => {
   );
   const [correctGuess, setCorrectGuess] = useState<boolean | null>(null);
   const [flipping, setFlipping] = useState<boolean>(false);
+
+  const [highscore, setHighscore] = useState<number | string | null>(0);
+
+  useEffect(() => {
+    let savedScore = localStorage.getItem('highscore');
+    setHighscore(savedScore);
+  }, []);
 
   const setMessageColor = () => {
     if (correctGuess === null) return 'text-black';
@@ -24,6 +31,14 @@ const App = () => {
     } else if (side === 'spin-tails') {
       setSelectedGuess('spin-tails');
       console.log(selectedGuess);
+    }
+  };
+
+  const updateHighscore = () => {
+    if (score <= highscore!) return;
+    if (score > highscore!) {
+      setHighscore(score);
+      localStorage.setItem('highscore', highscore!.toString());
     }
   };
 
@@ -58,15 +73,22 @@ const App = () => {
       }
     }, 3000);
     setTimeout(() => {
+      updateHighscore();
+
       setFlipping(false);
       setGuessMessage('Go again :P');
       setSelectedGuess('spin-heads');
+      console.log(highscore);
       return (coin!.className = 'coin-container');
-    }, 5555);
+    }, 4444);
   };
   return (
     <div className="wrapper">
       <div className="card flex flex-col justify-between items-center rounded-md">
+        <div className="highscore">
+          <p className="text-yellow-500">{highscore}</p>
+          <p>🔥</p>
+        </div>
         <div className="card-header">
           <h1>Flip The Coin!</h1>
         </div>
