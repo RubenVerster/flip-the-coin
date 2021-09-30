@@ -14,8 +14,21 @@ const App = () => {
 
   useEffect(() => {
     let savedScore = localStorage.getItem('highscore');
+    if (savedScore === null || savedScore === undefined) return setHighscore(0);
     setHighscore(savedScore);
   }, []);
+
+  useEffect(() => {
+    console.log(`high`, highscore);
+    console.log(`current`, score);
+    if (score <= highscore!) return;
+    if (score > highscore!) {
+      setHighscore(score);
+      localStorage.setItem('highscore', score.toString());
+    }
+    console.log(`high`, highscore);
+    console.log(`current`, score);
+  }, [score]);
 
   const setMessageColor = () => {
     if (correctGuess === null) return 'text-black';
@@ -27,18 +40,8 @@ const App = () => {
     if (flipping) return;
     if (side === 'spin-heads') {
       setSelectedGuess('spin-heads');
-      console.log(selectedGuess);
     } else if (side === 'spin-tails') {
       setSelectedGuess('spin-tails');
-      console.log(selectedGuess);
-    }
-  };
-
-  const updateHighscore = () => {
-    if (score <= highscore!) return;
-    if (score > highscore!) {
-      setHighscore(score);
-      localStorage.setItem('highscore', highscore!.toString());
     }
   };
 
@@ -59,7 +62,6 @@ const App = () => {
       sideStr = 'spin-heads';
       coin!.className = 'coin-container spin-heads';
     }
-    console.log(side, sideStr);
 
     setTimeout(() => {
       if (selectedGuess === sideStr) {
@@ -71,16 +73,12 @@ const App = () => {
         setGuessMessage('Wrong! ಥ_ಥ');
         setScore(0);
       }
-    }, 3000);
+    }, 2000);
     setTimeout(() => {
-      updateHighscore();
-
       setFlipping(false);
       setGuessMessage('Go again :P');
-      setSelectedGuess('spin-heads');
-      console.log(highscore);
-      return (coin!.className = 'coin-container');
-    }, 4444);
+      coin!.className = 'coin-container';
+    }, 3333);
   };
   return (
     <div className="wrapper">

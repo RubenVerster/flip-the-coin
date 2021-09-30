@@ -1,12 +1,12 @@
 .spin-heads {
-  animation: spin-heads 3s forwards;
+  animation: spin-heads $animation-speed forwards;
 }
 .spin-tails {
-  animation: spin-tails 3s forwards;
+  animation: spin-tails $animation-speed forwards;
 }
 
 .move-coin {
-  animation: move-coin 3s forwards;
+  animation: move-coin $animation-speed forwards;
 }
 
 @keyframes spin-heads {
@@ -34,7 +34,7 @@
     transform: translateY(0%);
   }
   20% {
-    transform: translateY(-30%);
+    transform: translateY(-100%);
   }
   80% {
     transform: translateY(-1%);
